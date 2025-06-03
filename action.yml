@@ -12,7 +12,9 @@ runs:
       uses: actions/attest-build-provenance@db473fddc028af60658334401dc6fa3ffd8669fd # 2.3.0
       with:
         subject-path: 'artifact/dist/*'
-    - run: gh release upload ${{ github.event.release.tag_name }} ${{ steps.attest.outputs.bundle-path }}
+    - run: gh release upload "$RELEASE_TAG" "$BUNDLE_PATH"
       env:
+        BUNDLE_PATH: ${{ steps.attest.outputs.bundle-path }}
+        RELEASE_TAG: ${{ github.event.release.tag_name }}
         GITHUB_TOKEN: ${{ github.token }}
       shell: bash
