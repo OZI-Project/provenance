@@ -4,6 +4,10 @@ author: 'OZI Project'
 branding:
   color: 'blue'
   icon: 'lock'
+inputs:
+  release-tag:
+    description: release tag to upload provenance to
+    required: true
 runs:
   using: composite
   steps:
@@ -18,6 +22,6 @@ runs:
     - run: gh release upload "$RELEASE_TAG" "$BUNDLE_PATH"
       env:
         BUNDLE_PATH: ${{ steps.attest.outputs.bundle-path }}
-        RELEASE_TAG: ${{ github.event.release.tag_name }}
+        RELEASE_TAG: ${{ inputs.release-tag }}
         GITHUB_TOKEN: ${{ github.token }}
       shell: bash
