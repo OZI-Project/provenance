@@ -15,8 +15,8 @@ runs:
       uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # 2.4.0
       with:
         subject-path: |
-          'artifact/dist/*.tar.gz'
-          'artifact/dist/*.whl
+          'artifact/dist/*'
+          '!artifact/dist/.gitignore'
     - run: gh release upload "$RELEASE_TAG" "$BUNDLE_PATH"
       env:
         BUNDLE_PATH: ${{ steps.attest.outputs.bundle-path }}
