@@ -16,7 +16,7 @@ runs:
         fetch-depth: 0
     - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
     - id: attest
-      uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # 2.4.0
+      uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a # 3.0.0
       with:
         subject-path: 'artifact/dist/*'
     - run: gh release upload "$RELEASE_TAG" "$BUNDLE_PATH"
